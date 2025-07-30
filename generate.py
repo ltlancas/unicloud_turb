@@ -132,10 +132,11 @@ def init_vec_potential(kspec, kmin, kmax, N, seed=42):
         np.random.seed(seed + i)
         ak = np.zeros((N, N, N), dtype=complex)
         phase = np.exp(1.j*2*np.pi*np.random.normal(size=(N, N, N)))
-        sigma_norm = (K**2 + 0.001**2) ** (-0.5 * (kspec+1))
+        sigma_norm = (K**2 + 1e-300**2) ** (-0.5 * (kspec+1))
         norms = np.random.rayleigh(sigma_norm)
         ak[mask] = norms[mask]* phase[mask]
         ak = make_hermitian(ak, N)
+        ak[mask1] = 0
         ak[mask2] *= np.exp(-1 * (K[mask2] / kmax) ** 2) * np.e
         AK.append(ak)
     AK = np.array(AK)
