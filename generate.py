@@ -132,10 +132,11 @@ def init_vec_potential(kspec, kmin, kmax, N, seed=42):
         np.random.seed(seed + i)
         ak = np.zeros((N, N, N), dtype=complex)
         phase = np.exp(1.j*2*np.pi*np.random.normal(size=(N, N, N)))
-        sigma_norm = (K**2 + 0.001**2) ** (-0.5 * (kspec+1))
+        sigma_norm = (K**2 + 1e-300**2) ** (-0.5 * (kspec+1))
         norms = np.random.rayleigh(sigma_norm)
         ak[mask] = norms[mask]* phase[mask]
         ak = make_hermitian(ak, N)
+        ak[mask1] = 0
         ak[mask2] *= np.exp(-1 * (K[mask2] / kmax) ** 2) * np.e
         AK.append(ak)
     AK = np.array(AK)
@@ -260,7 +261,7 @@ def generate_velocity_cube(
     sigma: float = 1.0,
     kspec: float = 2.0,
     kmin: int = 2,
-    kmax: int = 32,
+    kmax: int = 16,
     N: int = 128,
 ):
     """Generates an hdf5 file containing the Cartesian coordinate functions
@@ -284,7 +285,7 @@ def generate_velocity_cube(
     # Lorentz's Birthday: 18th of July, 1853 - adding this to the random seed so seed 0 is really this.
     lorentz_bday = 18071853
 
-    (vx, vy, vz) = init_velocity_field(sigma, kspec, kmin, kmax, N, seed=seed + lorentz_bday)
+    (vx, vy, vz) = init_velocity_field_proj(sigma, kspec, kmin, kmax, N, seed=seed + lorentz_bday)
     x, y, z = cell_center_coordinates(N)
 
     # Use H5py to create a HDF5 file that stores the velocity field information
