@@ -86,7 +86,7 @@ def generate_velocity_cube(
     seed: int = 0,
     sigma: float = 1.0,
     kspec: float = 2.0,
-    kmin: int = 2,
+    kmin: int = 0,
     kmax: int = 32,
     N: int = 128,
 ):
@@ -111,7 +111,7 @@ def generate_velocity_cube(
     # Lorentz's Birthday: 18th of July, 1853 - adding this to the random seed so seed 0 is really this.
     lorentz_bday = 18071853
 
-    (vx, vy, vz) = init_velocity_field(sigma, kspec, kmin, kmax, N, seed=seed + lorentz_bday)
+    (vx, vy, vz) = init_velocity_field_proj(sigma, kspec, kmin, kmax, N, seed=seed + lorentz_bday)
     x, y, z = cell_center_coordinates(N)
 
     # Use H5py to create a HDF5 file that stores the velocity field information
