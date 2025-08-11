@@ -1,7 +1,9 @@
 # unicloud_turb
 Generate a gaussian random velocity field for initial conditions for a turbulent molecular cloud.
 
-To generate the 100 realizations, run `python generate.py`, which will generate a set of `.h5` HDF5 outputs storing the Cartesian cell-centered coordinates and corresponding velocity components. For examples of how to read these outputs see `generate.ipynb`. 
+To generate the 100 realizations, run `python generate.py`, which will generate a set of `.h5` HDF5 outputs storing the Cartesian cell-centered coordinates and corresponding velocity components.
+
+The default velocity cube (generated with `python generate.py` by LL on Augst 11th, 2025) is stored on [Zenodo](https://zenodo.org/records/16795651). Python code to donwload this file from the web along with instructions on how to read the file are available in the `generate.ipynb` notebook. 
 
 ## How to use this to generate a standard GMC initial condition
 To realize the standard GMC setup agreed upon at Numerical Recipes in Star Formation:
