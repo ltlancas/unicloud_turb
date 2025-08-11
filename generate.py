@@ -261,7 +261,7 @@ def generate_velocity_cube(
     sigma: float = 1.0,
     kspec: float = 2.0,
     kmin: int = 0,
-    kmax: int = 32,
+    kmax: int = 16,
     N: int = 128,
 ):
     """Generates an hdf5 file containing the Cartesian coordinate functions
