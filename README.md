@@ -13,4 +13,7 @@ To realize the standard GMC setup agreed upon at Numerical Recipes in Star Forma
 <img width="914" height="600" alt="Screenshot 2025-08-05 at 11 08 12 AM" src="https://github.com/user-attachments/assets/c272af65-bb81-4c5d-90a4-f2ef0b421418" />
 
 ## Example velocity field
-Here is the typical pattern you should expect with the default cube (showing column density as viewed from the +z direction):![unicloud_seed0](https://github.com/user-attachments/assets/a79c8713-818c-4c08-b0c2-2112ddc4d048)
+Here is the typical pattern you should expect with the default cube (showing column density as viewed from the +z direction):
+![unicloud_seed0](https://github.com/user-attachments/assets/5512fe91-2821-4e23-aa28-c2524b01a67c)
+
+
